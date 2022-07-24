@@ -1,0 +1,27 @@
+option(
+	'bugreport_url',
+	type: 'string',
+	value: 'https://github.com/lethalbit/clank/issues',
+	description: 'URL for bug report submissions'
+)
+
+option(
+	'build_tests',
+	type: 'boolean',
+	value: true,
+	description: 'Build the library with tests'
+)
+
+option(
+	'build_examples',
+	type: 'boolean',
+	value: true,
+	description: 'Build the library with examples'
+)
+
+option(
+	'install_examples',
+	type: 'boolean',
+	value: true,
+	description: 'Install example sources into $PREFIX/share/sawmill/examples'
+)
