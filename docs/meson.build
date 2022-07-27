@@ -17,6 +17,6 @@ if sphinx.found()
 			'@0@'.format(meson.current_build_dir())
 		]
 	)
-elif
+else
 	warning('sphinx-build not found, skipping doc target')
 endif
