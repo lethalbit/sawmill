@@ -1,6 +1,6 @@
 # Sawmill
 
-Sawmill is a structured logging library for C++ that takes inspiration after the [tokio tracing](https://tracing.rs/) library.
+Sawmill is a framework for instrumenting C++ applications to collect structured event-based diagnostic information, much in the same way that the [tokio](https://tokio.rs/) [tracing](https://tracing.rs/tracing/index.html) library does for rust.
 
 
 ## Documentation
