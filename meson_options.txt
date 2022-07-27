@@ -25,3 +25,24 @@ option(
 	value: true,
 	description: 'Install example sources into $PREFIX/share/sawmill/examples'
 )
+
+option(
+	'build_compiler_plugins',
+	type: 'boolean',
+	value: true,
+	description: 'Build compiler plugins for sawmill instrumentation attribute support'
+)
+
+option(
+	'plugin_gcc',
+	type: 'boolean',
+	value: true,
+	description: 'Build GCC plugin'
+)
+
+option(
+	'plugin_clang',
+	type: 'boolean',
+	value: true,
+	description: 'Build Clang plugin'
+)

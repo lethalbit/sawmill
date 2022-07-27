@@ -76,6 +76,7 @@ add_project_arguments(
 
 is_clang        = (cxx.get_id() == 'clang')
 is_gcc          = (cxx.get_id() == 'gcc')
+is_windows      = (target_machine.system() == 'windows')
 compiler_verson = cxx.version()
 
 if is_gcc and compiler_verson.version_compare('<11.0.0')

@@ -36,3 +36,7 @@ endif
 
 subdir('sawmill')
 subdir('sawmill-subscriber')
+
+if get_option('build_compiler_plugins')
+	subdir('sawmill-plugins')
+endif
