@@ -3,6 +3,10 @@
 Sawmill is a structured logging library for C++ that takes inspiration after the [tokio tracing](https://tracing.rs/) library.
 
 
+## Documentation
+
+Comprehensive documentation about sawmill and its usage can be found at [https://lethalbit.github.io/sawmill/](https://lethalbit.github.io/sawmill/).
+
 
 ## Configuring and Building
 
@@ -24,7 +28,7 @@ Optionally, when also building with binding support (which is the default) you a
 
 ### Configuring
 
-You can build libalfheim with the default options, all of which can be found in [`meson_options.txt`](meson_options.txt). You can change these by specifying `-D<OPTION_NAME>=<VALUE>` at initial meson invocation time, or with `meson configure` in the build directory post initial configure.
+You can build sawmill with the default options, all of which can be found in [`meson_options.txt`](meson_options.txt). You can change these by specifying `-D<OPTION_NAME>=<VALUE>` at initial meson invocation time, or with `meson configure` in the build directory post initial configure.
 
 To change the install prefix, which is `/usr/local` by default ensure to pass `--prefix <PREFIX>` when running meson for the first time.
 
@@ -32,7 +36,7 @@ In either case, simply running `meson build` from the root of the repository wil
 
 ### Building
 
-Once you have configured libalfheim appropriately, to simply build and install simply run the following:
+Once you have configured sawmill appropriately, to simply build and install simply run the following:
 
 ```
 $ ninja -C build
@@ -44,7 +48,7 @@ This will build and install Clank into the default prefix which is `/usr/local`,
 
 ### Notes to Package Maintainers
 
-If you are building libalfheim for inclusion in a distributions package system then ensure to set `DESTDIR` prior to running meson install.
+If you are building sawmill for inclusion in a distributions package system then ensure to set `DESTDIR` prior to running meson install.
 
 There is also a `bugreport_url` configuration option that is set to this repositories issues tracker by default, it is recommended to change it to your distributions bug tracking page.
 
