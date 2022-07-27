@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Search &mdash; Sawmill 0.0.0 documentation</title>
+  <title>Building Sawmill &mdash; Sawmill 0.0.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/styles.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
       <link rel="stylesheet" href="_static/platformpicker.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/styles.css" type="text/css" />
-    <link rel="canonical" href="https://lethalbit.github.io/sawmill/search.html" />
-    
+    <link rel="canonical" href="https://lethalbit.github.io/sawmill/building.html" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -24,10 +24,10 @@
         <script>mermaid.initialize({startOnLoad:true});</script>
         <script src="_static/js/mermaid.min.js"></script>
     <script src="_static/js/theme.js"></script>
-    <script src="_static/searchtools.js"></script>
-    <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Compiler Plugins" href="plugins.html" />
+    <link rel="prev" title="Introduction to Sawmill" href="introduction.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -38,14 +38,14 @@
             <a href="index.html" class="icon icon-home"> Sawmill
           </a>
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction to Sawmill</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html#concepts">Concepts</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="introduction.html#slices">Slices</a></li>
@@ -60,11 +60,11 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="building.html">Building Sawmill</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="building.html#system-requirements">System Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="building.html#configuring">Configuring</a></li>
-<li class="toctree-l2"><a class="reference internal" href="building.html#building">Building</a></li>
-<li class="toctree-l2"><a class="reference internal" href="building.html#notes-to-package-maintainers">Notes to Package Maintainers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Building Sawmill</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#system-requirements">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring">Configuring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building">Building</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notes-to-package-maintainers">Notes to Package Maintainers</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="plugins.html">Compiler Plugins</a><ul>
@@ -104,7 +104,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Search</li>
+      <li>Building Sawmill</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -113,22 +113,52 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search functionality.
-    </p>
-  </div>
-  </noscript>
+  <section id="building-sawmill">
+<h1>Building Sawmill<a class="headerlink" href="#building-sawmill" title="Permalink to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The following instructions are a work-in-progress and may not be entirely up to date.</p>
+</div>
+<section id="system-requirements">
+<h2>System Requirements<a class="headerlink" href="#system-requirements" title="Permalink to this heading"></a></h2>
+<p>To build Sawmill, ensure you have the following build time dependencies:</p>
+<ul class="simple">
+<li><p>git</p></li>
+<li><p>meson</p></li>
+<li><p>ninja</p></li>
+<li><p>g++ &gt;= 11 or clang++ &gt;= 11</p></li>
+</ul>
+</section>
+<section id="configuring">
+<h2>Configuring<a class="headerlink" href="#configuring" title="Permalink to this heading"></a></h2>
+<p>You can build Sawmill with the default options, all of which can be found in <a class="reference external" href="https://github.com/lethalbit/sawmill/blob/main/meson_options.txt"><code class="docutils literal notranslate"><span class="pre">meson_options.txt</span></code></a>. You can change these by specifying <code class="docutils literal notranslate"><span class="pre">-D&lt;OPTION_NAME&gt;=&lt;VALUE&gt;</span></code> at initial meson invocation time, or with <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">configure</span></code> in the build directory post initial configure.</p>
+<p>To change the install prefix, which is <code class="docutils literal notranslate"><span class="pre">/usr/local</span></code> by default ensure to pass <code class="docutils literal notranslate"><span class="pre">--prefix</span> <span class="pre">&lt;PREFIX&gt;</span></code> when running meson for the first time.</p>
+<p>In either case, simply running <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">build</span></code> from the root of the repository will be sufficient and place all of the build files in the <code class="docutils literal notranslate"><span class="pre">build</span></code> subdirectory.</p>
+</section>
+<section id="building">
+<h2>Building<a class="headerlink" href="#building" title="Permalink to this heading"></a></h2>
+<p>Once you have configured Sawmill appropriately, to simply build and install simply run the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ninja -C build
+$ ninja -C build test # Optional: Run Tests
+$ ninja -C build install
+</pre></div>
+</div>
+<p>This will build and install Sawmill into the default prefix which is <code class="docutils literal notranslate"><span class="pre">/usr/local</span></code>, to change that see the configuration steps above.</p>
+</section>
+<section id="notes-to-package-maintainers">
+<h2>Notes to Package Maintainers<a class="headerlink" href="#notes-to-package-maintainers" title="Permalink to this heading"></a></h2>
+<p>If you are building Sawmill for inclusion in a distributions package system then ensure to set <code class="docutils literal notranslate"><span class="pre">DESTDIR</span></code> prior to running meson install.</p>
+<p>There is also a <code class="docutils literal notranslate"><span class="pre">bugreport_url</span></code> configuration option that is set to this repositories issues tracker by default, it is recommended to change it to your distributions bug tracking page.</p>
+</section>
+</section>
 
-  
-  <div id="search-results">
-  
-  </div>
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction to Sawmill" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="plugins.html" class="btn btn-neutral float-right" title="Compiler Plugins" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
@@ -150,14 +180,7 @@
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-  <script>
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script id="searchindexloader"></script>
-   
-
+  </script> 
 
 </body>
 </html>

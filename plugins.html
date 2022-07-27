@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compiler Plugins &mdash; Sawmill 0.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/styles.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="_static/platformpicker.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/styles.css" type="text/css" />
+    <link rel="canonical" href="https://lethalbit.github.io/sawmill/plugins.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/platformpicker.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+        <script src="_static/js/mermaid.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Sawmill API" href="api/index.html" />
+    <link rel="prev" title="Building Sawmill" href="building.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Sawmill
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction to Sawmill</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#concepts">Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#slices">Slices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#events">Events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#collectors">Collectors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#recording-slices-and-events">Recording Slices and Events</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#id3">Slices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#id5">Events</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="building.html">Building Sawmill</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="building.html#system-requirements">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building.html#configuring">Configuring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building.html#building">Building</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building.html#notes-to-package-maintainers">Notes to Package Maintainers</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Compiler Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#language-extensions">Language Extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gcc">GCC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clang">Clang</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">Sawmill API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/collector/index.html">Collector API</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/event/index.html">Event API</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/slice/index.html">Slice API</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sawmill</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Compiler Plugins</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="compiler-plugins">
+<h1>Compiler Plugins<a class="headerlink" href="#compiler-plugins" title="Permalink to this heading"></a></h1>
+<p>Sawmill ships with a plugin for both <a class="reference external" href="https://gcc.gnu.org/">gcc</a> and <a class="reference external" href="https://clang.llvm.org/">clang</a> which add standards compliant attributes to make using sawmill easier, mimicking how <a class="reference external" href="https://www.rust-lang.org/">rust</a>’s <a class="reference external" href="https://doc.rust-lang.org/reference/procedural-macros.html#attribute-macros">attribute macros</a> work. Allow for the automatic instrumentation of a decorated function.</p>
+<p>The plugins for both compilers are installed in <code class="docutils literal notranslate"><span class="pre">$PREFIX/share/sawmill/compiler_plugins</span></code>, and are suffixed with their respective compiler (e.g. <code class="docutils literal notranslate"><span class="pre">sawmill-gcc.so</span></code> and <code class="docutils literal notranslate"><span class="pre">sawmill-clang.so</span></code>). Throughout the rest of the documentation, the location of the plugins will be referred to as <code class="docutils literal notranslate"><span class="pre">$SAWMILL_PLUGINS</span></code> for brevity.</p>
+<section id="language-extensions">
+<h2>Language Extensions<a class="headerlink" href="#language-extensions" title="Permalink to this heading"></a></h2>
+<p>The primary language extension provided by sawmill is the <code class="docutils literal notranslate"><span class="pre">[[sawmill::instrument]]</span></code> attribute. This signals the compiler that has the plugin loaded, to automatically construct a <a class="reference internal" href="api/slice/index.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">slice</span></code></span></a> and enter it in the prelude of the annotated function, and exit it in the epilogue of the function.</p>
+<p>By default the automatically instrumented slice will have the functions name, and will automatically register any function parameters as metadata to be recorded.</p>
+<p>A simple example would be as follows:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="n">sawmill</span><span class="o">::</span><span class="n">instrument</span><span class="p">]]</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">foo</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="n">sawmill</span><span class="o">::</span><span class="n">event</span><span class="p">(</span><span class="n">sawmill</span><span class="o">::</span><span class="n">Level</span><span class="o">::</span><span class="n">Debug</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Doing math&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="o">*</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="o">*</span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In addition to this, you may pass arguments to the <code class="docutils literal notranslate"><span class="pre">[[sawmill::instrument]]</span></code> attribute to specify options for the slice construction.</p>
+<p>For example, specifying a slice with a different name and level would look like this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="n">sawmill</span><span class="o">::</span><span class="n">instrument</span><span class="p">({</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;level&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sawmill</span><span class="o">::</span><span class="n">Level</span><span class="o">::</span><span class="n">Trace</span><span class="p">})]]</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="n">baz</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="cm">/* Does some work */</span><span class="w"></span>
+<span class="w">	</span><span class="n">sawmill</span><span class="o">::</span><span class="n">event</span><span class="p">(</span><span class="n">sawmill</span><span class="o">::</span><span class="n">Level</span><span class="o">::</span><span class="n">Debug</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Done!&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Unfortunately the syntax to specify arbitrary arguments to the attribute is messy, but it’s the only way to provide the functionality to emulate the rust attribute macros.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>With clang there is a hard limit of 15 possible arguments to the attribute. If you <em><strong>really</strong></em> need to
+pass more than 15 arguments, wrap them in an outer initializer list</p>
+</div>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
+<p>To use the language extensions, simply invoke your chosen compiler with the correct sawmill plugin specified.</p>
+<section id="gcc">
+<h3>GCC<a class="headerlink" href="#gcc" title="Permalink to this heading"></a></h3>
+<p>To use GCC with the sawmill extensions, simply pass the <code class="docutils literal notranslate"><span class="pre">-fplugin=$SAWMILL_PLUGINS/sawmill-gcc.so</span></code> argument to your <code class="docutils literal notranslate"><span class="pre">g++</span></code> invocations.</p>
+</section>
+<section id="clang">
+<h3>Clang<a class="headerlink" href="#clang" title="Permalink to this heading"></a></h3>
+<p>To use Clang with the sawmill extensions, simply pass the <code class="docutils literal notranslate"><span class="pre">-fplugin=$SAWMILL_PLUGINS/sawmill-clang.so</span></code> argument to your <code class="docutils literal notranslate"><span class="pre">clang++</span></code> invocations.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="building.html" class="btn btn-neutral float-left" title="Building Sawmill" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api/index.html" class="btn btn-neutral float-right" title="Sawmill API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Aki &#34;lethalbit&#34; Van Ness, et. al..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

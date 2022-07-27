@@ -25,7 +25,8 @@
         <script src="_static/js/mermaid.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introduction to Sawmill" href="introduction.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,11 +44,51 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Sawmill</a></li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction to Sawmill</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#concepts">Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#slices">Slices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#events">Events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#collectors">Collectors</a></li>
 </ul>
-</div>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#recording-slices-and-events">Recording Slices and Events</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#id3">Slices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#id5">Events</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="building.html">Building Sawmill</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="building.html#system-requirements">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building.html#configuring">Configuring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building.html#building">Building</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building.html#notes-to-package-maintainers">Notes to Package Maintainers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">Compiler Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#language-extensions">Language Extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#usage">Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plugins.html#gcc">GCC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.html#clang">Clang</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">Sawmill API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/collector/index.html">Collector API</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/event/index.html">Event API</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/slice/index.html">Slice API</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
         </div>
       </div>
     </nav>
@@ -75,16 +116,25 @@
 </div>
 <section id="sawmill">
 <h1>Sawmill<a class="headerlink" href="#sawmill" title="Permalink to this heading"></a></h1>
+<p>Sawmill is a framework for instrumenting C++ applications to collect structured event-based diagnostic information, much in the same way that the <a class="reference external" href="https://tokio.rs/">tokio</a> <a class="reference external" href="https://tracing.rs/tracing/index.html">tracing</a> library does for rust.</p>
+<p>To get aquatinted with how Sawmill is structured see the <a class="reference internal" href="introduction.html"><span class="doc std std-doc">introduction</span></a> page explaining the theory of operation as well as core concepts.</p>
+<p>For instructions on building Sawmill, see the “<a class="reference internal" href="building.html"><span class="doc std std-doc">Building Sawmill</span></a>” section.</p>
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
-<p>Write the docs</p>
+<p>Add information about the API and integration</p>
 </div>
+<section id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this heading"></a></h2>
+<p>Sawmill is licensed under the <a class="reference external" href="https://spdx.org/licenses/BSD-3-Clause.html">BSD-3-Clause</a> license, the full text of which can be found in the <a class="reference external" href="https://github.com/lethalbit/sawmill/blob/main/LICENSE">LICENSE</a> file.</p>
+</section>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introduction.html" class="btn btn-neutral float-right" title="Introduction to Sawmill" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
