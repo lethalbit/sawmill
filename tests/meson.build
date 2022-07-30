@@ -3,6 +3,7 @@
 message('Building tests')
 
 test_srcs = [
+	'metadata'
 ]
 
 doctest = dependency('doctest',  required: false, version: '>=2.4.8-1')

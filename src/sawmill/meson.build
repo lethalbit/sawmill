@@ -5,6 +5,8 @@ sawmill_deps = [
 ]
 
 sawmill_hdrs = files([
+	'metadata.hh',
+	'sawmill.hh',
 ])
 
 sawmill_srcs = files([
