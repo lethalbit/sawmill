@@ -44,7 +44,7 @@ $ ninja -C build test # Optional: Run Tests
 $ ninja -C build install
 ```
 
-This will build and install Clank into the default prefix which is `/usr/local`, to change that see the configuration steps above.
+This will build and install Sawmill into the default prefix which is `/usr/local`, to change that see the configuration steps above.
 
 ### Notes to Package Maintainers
 
