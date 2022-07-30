@@ -97,9 +97,3 @@ endif
 
 
 subdir('docs')
-
-
-sawmill_dep = declare_dependency(
-	dependencies: sawmill_deps,
-	version: meson.project_version()
-)
