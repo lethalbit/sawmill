@@ -15,8 +15,6 @@ jobs:
         compiler:
           - 'gcc-11'
         cpp_std:
-          - 'c++11'
-          - 'c++14'
           - 'c++17'
           - 'c++20'
       fail-fast: true
