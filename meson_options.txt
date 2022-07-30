@@ -6,6 +6,13 @@ option(
 )
 
 option(
+	'build_collectors',
+	type: 'boolean',
+	value: true,
+	description: 'Build the builtin sawmill collectors'
+)
+
+option(
 	'build_tests',
 	type: 'boolean',
 	value: true,

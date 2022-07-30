@@ -35,7 +35,9 @@ else
 endif
 
 subdir('sawmill')
-subdir('sawmill-subscriber')
+if get_option('build_collectors')
+	subdir('sawmill-collectors')
+endif
 
 if get_option('build_compiler_plugins')
 	subdir('sawmill-plugins')
