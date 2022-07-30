@@ -1,5 +1,10 @@
 # Sawmill
 
+> **Warning** Lots of performance tuning has yet to be done!
+> Due to the nature of the library, care will be taken to
+> ensure that all of the hot path code will be as performant
+> as possible. **This will take some time**.
+
 Sawmill is a framework for instrumenting C++ applications to collect structured event-based diagnostic information, much in the same way that the [tokio](https://tokio.rs/) [tracing](https://tracing.rs/tracing/index.html) library does for rust.
 
 
