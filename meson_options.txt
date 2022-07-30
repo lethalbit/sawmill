@@ -13,6 +13,13 @@ option(
 )
 
 option(
+	'collectors',
+	type: 'array',
+	choices: ['file', 'journald', 'log'],
+	description: 'Sawmill collectors to build'
+)
+
+option(
 	'build_tests',
 	type: 'boolean',
 	value: true,
