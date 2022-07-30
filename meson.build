@@ -22,10 +22,10 @@ project(
 cxx = meson.get_compiler('cpp')
 
 if get_option('cpp_std') not in [
-		  'c++11',   'c++14',   'c++17',   'c++20',   'c++23',
-		'gnu++11', 'gnu++14', 'gnu++17', 'gnu++20', 'gnu++23'
+		  'c++17',   'c++20',   'c++23',
+		'gnu++17', 'gnu++20', 'gnu++23'
 	]
-	error('Unsupported C++ Version @0@, must be c++11/gnu++11 or newer'.format(get_option('cpp_std')))
+	error('Unsupported C++ Version @0@, must be c++17/gnu++17 or newer'.format(get_option('cpp_std')))
 endif
 
 extended_warnings = [
@@ -80,9 +80,9 @@ is_windows      = (target_machine.system() == 'windows')
 compiler_verson = cxx.version()
 
 if is_gcc and compiler_verson.version_compare('<11.0.0')
-	error('g++ version <= 11.0.0 is required to build Clank')
+	error('g++ version <= 11.0.0 is required to build Sawmill')
 elif is_clang and compiler_verson.version_compare('<11.0.0')
-	error('clang++ version <= 11.0.0 is required to build Clank')
+	error('clang++ version <= 11.0.0 is required to build Sawmill')
 endif
 
 subdir('src')
