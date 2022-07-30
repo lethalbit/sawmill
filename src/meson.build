@@ -34,7 +34,14 @@ else
 	config.set('VERSION_NUMBER', meson.project_version())
 endif
 
+config_header = configure_file(
+	configuration: config,
+	input: 'config.hh.in',
+	output: 'config.hh'
+)
+
 subdir('sawmill')
+
 if get_option('build_collectors')
 	subdir('sawmill-collectors')
 endif
