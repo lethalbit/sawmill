@@ -6,11 +6,12 @@ sawmill_deps = [
 
 sawmill_hdrs = files([
 	'metadata.hh',
+	'registry.hh',
 	'sawmill.hh',
 ])
 
 sawmill_srcs = files([
-
+	'registry.cc',
 ])
 
 sawmill = static_library(
@@ -24,7 +25,6 @@ sawmill = static_library(
 		sawmill_deps,
 	],
 
-	name_prefix: '',
 	pic: true,
 	gnu_symbol_visibility: 'inlineshidden',
 	implicit_include_directories: false,
