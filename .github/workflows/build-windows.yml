@@ -2,10 +2,10 @@ name: "Sawmill Build - Windows"
 on:
   push:
     branches:
-      - '*'
+      - 'uwu'
   pull_request:
     branches:
-      - '*'
+      - 'uwu'
 
 jobs:
   build:
