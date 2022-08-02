@@ -97,3 +97,21 @@ endif
 
 
 subdir('docs')
+
+clang_tidy = find_program('clang-tidy', required: false)
+if clang_tidy.found()
+	clang_tidy_wrapper = find_program(
+		'clang-tidy.py',
+		dirs: [
+			meson.current_source_dir() / 'contrib'
+		]
+	)
+	run_target(
+		'clang-tidy',
+		command: [
+			clang_tidy_wrapper,
+			'-s', meson.current_source_dir(),
+			'-p', meson.current_build_dir()
+		]
+	)
+endif
