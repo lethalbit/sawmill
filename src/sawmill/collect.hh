@@ -8,6 +8,8 @@
 
 #include <sawmill/internal.hh>
 #include <sawmill/metadata.hh>
+#include <sawmill/slice.hh>
+#include <sawmill/event.hh>
 
 namespace sawmill {
 	/*! Interface for implementing collectors */

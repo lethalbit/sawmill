@@ -4,7 +4,9 @@
 #define SAWMILL_HH
 
 #include <sawmill/collect.hh>
+#include <sawmill/event.hh>
 #include <sawmill/metadata.hh>
 #include <sawmill/registry.hh>
+#include <sawmill/slice.hh>
 
 #endif /* SAWMILL_HH */
