@@ -3,12 +3,28 @@
 #if !defined(SAWMILL_REGISTRY_HH)
 #define SAWMILL_REGISTRY_HH
 
+#include <atomic>
+#include <algorithm>
+#include <utility>
 #include <vector>
 
 #include <sawmill/internal.hh>
+#include <sawmill/collect.hh>
 #include <sawmill/metadata.hh>
 
 namespace sawmill {
+	using sawmill::internal::rwlock;
+
+	enum struct InitStatus {
+		Uninitialized,
+		Initializing,
+		Initialized,
+	};
+	using AtomicInit = std::atomic<InitStatus>;
+
+	SAWMILL_WEAK_LINKAGE
+	extern AtomicInit GLOBAL_INIT;
+
 	struct ExecutionContext {
 	private:
 		Relevancy _relevance{Relevancy::Never};
@@ -32,6 +48,13 @@ namespace sawmill {
 		}
 	};
 
+
+	struct State final {
+		std::optional<std::shared_ptr<Collector>> collector;
+		std::atomic_bool can_enter;
+	};
+
+	extern thread_local State STATE;
 	/*!
 
 		**Warning** While there are 8Ki reserved ExecutionContext
