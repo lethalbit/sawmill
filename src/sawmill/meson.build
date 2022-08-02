@@ -5,6 +5,7 @@ sawmill_deps = [
 ]
 
 sawmill_hdrs = files([
+	'collect.hh',
 	'internal.hh',
 	'metadata.hh',
 	'registry.hh',
@@ -12,6 +13,7 @@ sawmill_hdrs = files([
 ])
 
 sawmill_srcs = files([
+	'collect.cc',
 	'registry.cc',
 ])
 
