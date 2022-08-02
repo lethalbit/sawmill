@@ -193,6 +193,16 @@ namespace sawmill {
 	}
 
 
+	/*! The relevancy of a a given <THING> */
+	enum struct Relevancy : std::uint8_t {
+		/*! It is never relevant to the Collector */
+		Never        = 0x00U,
+		/*! Sometimes it is relevant */
+		Occasionally = 0x01U,
+		/*! It is always relevant */
+		Always       = 0x02U,
+	};
+
 	/*! Metadata describing an `event` or `slice`
 
 
