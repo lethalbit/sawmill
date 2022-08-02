@@ -7,7 +7,7 @@
 #include <string_view>
 #include <optional>
 #include <type_traits>
-
+#include <variant>
 
 namespace sawmill {
 	using namespace std::literals::string_view_literals;
@@ -144,6 +144,26 @@ namespace sawmill {
 		return (static_cast<U>(k) & static_cast<U>(Kind::Slice)) == static_cast<U>(Kind::Slice);
 
 	}
+
+
+	inline namespace Parents {
+		/*! Orphaned Slice */
+		struct None final {};
+		/*! Root Slice */
+		struct Root final {};
+		/*! Currently Active Slice */
+		struct Current final {};
+		/*! Fixed Parent  */
+		struct Fixed final { std::uint64_t id; };
+	}
+
+	/*! The parent of a slice */
+	using Parent = std::variant<
+		Parents::None,
+		Parents::Root,
+		Parents::Current,
+		Parents::Fixed
+	>;
 
 	/*! Event/Span level */
 	enum struct Level : std::uint8_t {
