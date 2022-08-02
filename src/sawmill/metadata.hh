@@ -169,25 +169,25 @@ namespace sawmill {
 
 
 	[[nodiscard]]
-	constexpr inline bool operator>(Level& lh, Level& rh) noexcept {
+	constexpr inline bool operator>(const Level lh, const Level rh) noexcept {
 		using U = std::underlying_type_t<Level>;
 		return static_cast<U>(lh) > static_cast<U>(rh);
 	}
 
 	[[nodiscard]]
-	constexpr inline bool operator>=(Level& lh, Level& rh) noexcept {
+	constexpr inline bool operator>=(const Level lh, const Level rh) noexcept {
 		using U = std::underlying_type_t<Level>;
 		return static_cast<U>(lh) >= static_cast<U>(rh);
 	}
 
 	[[nodiscard]]
-	constexpr inline bool operator<(Level& lh, Level& rh) noexcept {
+	constexpr inline bool operator<(const Level lh, const Level rh) noexcept {
 		using U = std::underlying_type_t<Level>;
 		return static_cast<U>(lh) < static_cast<U>(rh);
 	}
 
 	[[nodiscard]]
-	constexpr inline bool operator<=(Level& lh, Level& rh) noexcept {
+	constexpr inline bool operator<=(const Level lh, const Level rh) noexcept {
 		using U = std::underlying_type_t<Level>;
 		return static_cast<U>(lh) <= static_cast<U>(rh);
 	}
