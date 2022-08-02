@@ -25,6 +25,7 @@ namespace sawmill {
 	SAWMILL_WEAK_LINKAGE
 	extern AtomicInit GLOBAL_INIT;
 
+	/*! Nya */
 	struct ExecutionContext {
 	private:
 		Relevancy _relevance{Relevancy::Never};
@@ -35,10 +36,12 @@ namespace sawmill {
 		constexpr ExecutionContext(Metadata&& meta) noexcept :
 			_metadata{std::move(meta)} { /* NOP */ }
 
+		[[nodiscard]]
 		virtual const Metadata& metadata() const noexcept {
 			return _metadata;
 		}
 
+		[[nodiscard]]
 		virtual Relevancy relevance() const noexcept {
 			return _relevance;
 		}
@@ -55,6 +58,7 @@ namespace sawmill {
 	};
 
 	extern thread_local State STATE;
+
 	/*!
 
 		**Warning** While there are 8Ki reserved ExecutionContext

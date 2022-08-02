@@ -32,8 +32,9 @@ namespace sawmill::internal {
 			constexpr lock_result(std::shared_mutex& mut, U& obj) noexcept :
 				_lock{mut}, _obj{obj} { /* nop */ }
 
+			[[nodiscard]]
 			U* operator->() noexcept { return &_obj; }
-
+			[[nodiscard]]
 			U& operator*() noexcept { return _obj; }
 
 		};
@@ -49,10 +50,11 @@ namespace sawmill::internal {
 		/*! Return a const ref version of the object
 			to ensure that you can not change the result.
 		*/
+		[[nodiscard]]
 		lock_result<const T, std::shared_lock> read() noexcept {
 			return {_mutex, _obj};
 		}
-
+		[[nodiscard]]
 		lock_result<T, std::unique_lock> write() noexcept {
 			return {_mutex, _obj};
 		}

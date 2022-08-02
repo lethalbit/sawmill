@@ -14,6 +14,7 @@
 namespace sawmill {
 	/*! Interface for implementing collectors */
 	struct Collector {
+		[[nodiscard]]
 		virtual Relevancy register_(Metadata& metadata) const noexcept {
 			if (enabled(metadata)) {
 				return Relevancy::Always;
@@ -25,6 +26,7 @@ namespace sawmill {
 		/*! Returns if an `Event` or `Slice` with the given
 			`Metadata` would be collected.
 		*/
+		[[nodiscard]]
 		virtual bool enabled(Metadata&) const noexcept = 0;
 
 		/*! Returns the highest `Level` that will be collected / enabled
@@ -32,6 +34,7 @@ namespace sawmill {
 			is not implemented.
 
 		*/
+		[[nodiscard]]
 		virtual std::optional<Level> max_level() const noexcept {
 			return std::nullopt;
 		}
@@ -39,6 +42,7 @@ namespace sawmill {
 
 	/*! An empty collector implementation */
 	struct NullCollector final : Collector {
+		[[nodiscard]]
 		bool enabled(Metadata&) const noexcept override { return false; }
 	};
 
