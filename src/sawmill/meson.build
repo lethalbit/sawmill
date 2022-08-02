@@ -5,6 +5,7 @@ sawmill_deps = [
 ]
 
 sawmill_hdrs = files([
+	'internal.hh',
 	'metadata.hh',
 	'registry.hh',
 	'sawmill.hh',
