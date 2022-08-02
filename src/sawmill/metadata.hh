@@ -22,54 +22,60 @@ namespace sawmill {
 		std::string_view _file;
 		std::string_view _func;
 
-		constexpr source_location(loc_t ln, loc_t col, std::string_view file, std::string_view func) noexcept :
-		 _line{ln}, _column{col}, _file{file}, _func{func} { /* nop */ }
+		// NOLINTNEXTLINE(bugprone-easily-swappable-parameters)
+		constexpr source_location(loc_t line, loc_t col, std::string_view file, std::string_view func) noexcept :
+		 _line{line}, _column{col}, _file{file}, _func{func} { /* nop */ }
 
 	public:
-		constexpr source_location(const source_location&) = default;
-		constexpr source_location(source_location&& ) = default;
+		~source_location() noexcept = default;
+
+		constexpr source_location(const source_location&) noexcept = default;
+		constexpr source_location(source_location&&) noexcept = default;
+
+		source_location& operator=(const source_location&) noexcept = default;
+		source_location& operator=(source_location&&) noexcept = default;
 
 #if defined(__clang__) and (__clang_major__ >= 9) and !defined(__apple_build_version__)
 		/* Non-apple Clang */
 		[[nodiscard]]
 		inline static constexpr source_location current(
-			loc_t ln          = __builtin_LINE(),
+			loc_t line        = __builtin_LINE(),
 			loc_t col         = __builtin_COLUMN(),
 			const char* file  = __builtin_FILE(),
 			const char* func  = __builtin_FUNCTION()
 		) noexcept {
-			return { ln, col, file, func };
+			return { line, col, file, func };
 		}
 #elif defined(__clang__) and (__clang_major__ >= 9) and defined(__apple_build_version__)
 		[[nodiscard]]
 		inline static constexpr source_location current(
-			loc_t ln          = __builtin_LINE(),
+			loc_t line        = __builtin_LINE(),
 			loc_t col         = 0,
 			const char* file  = __builtin_FILE(),
 			const char* func  = __builtin_FUNCTION()
 		) noexcept {
-			return { ln, col, file, func };
+			return { line, col, file, func };
 		}
 #elif defined(__GNUC__) and (__GNUC__ > 4)
 		/* GCC */
 		[[nodiscard]]
 		inline static constexpr source_location current(
-			loc_t ln          = __builtin_LINE(),
+			loc_t line        = __builtin_LINE(),
 			loc_t col         = 0,
 			const char* file  = __builtin_FILE(),
 			const char* func  = __builtin_FUNCTION()
 		) noexcept {
-			return { ln, col, file, func };
+			return { line, col, file, func };
 		}
 #else /* MSVC, et. al. */
 		[[nodiscard]]
 		inline static constexpr source_location current(
-			loc_t ln          = 0,
+			loc_t line        = 0,
 			loc_t col         = 0,
 			const char* file  = "unknown",
 			const char* func  = "unknown"
 		) noexcept {
-			return { ln, col, file, func };
+			return { line, col, file, func };
 		}
 #endif
 		[[nodiscard]]
@@ -83,43 +89,43 @@ namespace sawmill {
 		constexpr std::string_view function_name() const noexcept { return _func; }
 
 		[[nodiscard]]
-		inline constexpr bool operator==(const source_location& rh) const noexcept {
-			return  (_column == rh._column) &&
-					(_line == rh._line)     &&
-					(_file == rh._file)     &&
-					(_func == rh._func);
+		inline constexpr bool operator==(const source_location& loc) const noexcept {
+			return  (_column == loc._column) &&
+					(_line == loc._line)     &&
+					(_file == loc._file)     &&
+					(_func == loc._func);
 		}
 
 		[[nodiscard]]
-		inline constexpr bool operator!=(const source_location& rh) const noexcept {
-			return !operator==(rh);
+		inline constexpr bool operator!=(const source_location& loc) const noexcept {
+			return !operator==(loc);
 		}
 
 		[[nodiscard]]
-		inline constexpr bool operator>(const source_location& rh) const noexcept {
-			return (_file == rh._file) && (_func == rh._func) && (
-				(_column > rh._column) || (_line > rh._line)
+		inline constexpr bool operator>(const source_location& loc) const noexcept {
+			return (_file == loc._file) && (_func == loc._func) && (
+				(_column > loc._column) || (_line > loc._line)
 			);
 		}
 
 		[[nodiscard]]
-		inline constexpr bool operator>=(const source_location& rh) const noexcept {
-			return (_file == rh._file) && (_func == rh._func) && (
-				(_column >= rh._column) || (_line >= rh._line)
+		inline constexpr bool operator>=(const source_location& loc) const noexcept {
+			return (_file == loc._file) && (_func == loc._func) && (
+				(_column >= loc._column) || (_line >= loc._line)
 			);
 		}
 
 		[[nodiscard]]
-		inline constexpr bool operator<(const source_location& rh) const noexcept {
-			return (_file == rh._file) && (_func == rh._func) && (
-				 (_column < rh._column) || (_line < rh._line)
+		inline constexpr bool operator<(const source_location& loc) const noexcept {
+			return (_file == loc._file) && (_func == loc._func) && (
+				 (_column < loc._column) || (_line < loc._line)
 			);
 		}
 
 		[[nodiscard]]
-		inline constexpr bool operator<=(const source_location& rh) const noexcept {
-			return (_file == rh._file) && (_func == rh._func) && (
-				(_column <= rh._column) || (_line <= rh._line)
+		inline constexpr bool operator<=(const source_location& loc) const noexcept {
+			return (_file == loc._file) && (_func == loc._func) && (
+				(_column <= loc._column) || (_line <= loc._line)
 			);
 		}
 	};
@@ -133,16 +139,16 @@ namespace sawmill {
 	};
 
 	[[nodiscard]]
-	constexpr inline bool is_event(const Kind k) noexcept {
+	constexpr inline bool is_event(const Kind kind) noexcept {
 		using U = std::underlying_type_t<Kind>;
-		return (static_cast<U>(k) & static_cast<U>(Kind::Event)) == static_cast<U>(Kind::Event);
+		return (static_cast<U>(kind) & static_cast<U>(Kind::Event)) == static_cast<U>(Kind::Event);
 
 	}
 
 	[[nodiscard]]
-	constexpr inline bool is_slice(const Kind k) noexcept {
+	constexpr inline bool is_slice(const Kind kind) noexcept {
 		using U = std::underlying_type_t<Kind>;
-		return (static_cast<U>(k) & static_cast<U>(Kind::Slice)) == static_cast<U>(Kind::Slice);
+		return (static_cast<U>(kind) & static_cast<U>(Kind::Slice)) == static_cast<U>(Kind::Slice);
 
 	}
 
@@ -190,27 +196,27 @@ namespace sawmill {
 
 
 	[[nodiscard]]
-	constexpr inline bool operator>(const Level lh, const Level rh) noexcept {
+	constexpr inline bool operator>(const Level lhs, const Level rhs) noexcept {
 		using U = std::underlying_type_t<Level>;
-		return static_cast<U>(lh) > static_cast<U>(rh);
+		return static_cast<U>(lhs) > static_cast<U>(rhs);
 	}
 
 	[[nodiscard]]
-	constexpr inline bool operator>=(const Level lh, const Level rh) noexcept {
+	constexpr inline bool operator>=(const Level lhs, const Level rhs) noexcept {
 		using U = std::underlying_type_t<Level>;
-		return static_cast<U>(lh) >= static_cast<U>(rh);
+		return static_cast<U>(lhs) >= static_cast<U>(rhs);
 	}
 
 	[[nodiscard]]
-	constexpr inline bool operator<(const Level lh, const Level rh) noexcept {
+	constexpr inline bool operator<(const Level lhs, const Level rhs) noexcept {
 		using U = std::underlying_type_t<Level>;
-		return static_cast<U>(lh) < static_cast<U>(rh);
+		return static_cast<U>(lhs) < static_cast<U>(rhs);
 	}
 
 	[[nodiscard]]
-	constexpr inline bool operator<=(const Level lh, const Level rh) noexcept {
+	constexpr inline bool operator<=(const Level lhs, const Level rhs) noexcept {
 		using U = std::underlying_type_t<Level>;
-		return static_cast<U>(lh) <= static_cast<U>(rh);
+		return static_cast<U>(lhs) <= static_cast<U>(rhs);
 	}
 
 

@@ -23,7 +23,7 @@ namespace sawmill {
 	using AtomicInit = std::atomic<InitStatus>;
 
 	SAWMILL_WEAK_LINKAGE
-	extern AtomicInit GLOBAL_INIT;
+	extern AtomicInit GLOBAL_INIT; // NOLINT(cppcoreguidelines-avoid-non-const-global-variables)
 
 	/*! Nya */
 	struct ExecutionContext {
@@ -35,6 +35,13 @@ namespace sawmill {
 
 		constexpr ExecutionContext(Metadata&& meta) noexcept :
 			_metadata{std::move(meta)} { /* NOP */ }
+
+		constexpr ExecutionContext(const ExecutionContext&) = delete;
+		constexpr ExecutionContext(ExecutionContext&&) = default;
+		virtual ~ExecutionContext() = default;
+
+		ExecutionContext& operator=(const ExecutionContext&) = delete;
+		ExecutionContext& operator=(ExecutionContext&&) = default;
 
 		[[nodiscard]]
 		virtual const Metadata& metadata() const noexcept {
@@ -57,6 +64,7 @@ namespace sawmill {
 		std::atomic_bool can_enter;
 	};
 
+	// NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)
 	extern thread_local State STATE;
 
 	/*!
@@ -110,7 +118,7 @@ namespace sawmill {
 		for Sawmill to interact with.
 	*/
 	SAWMILL_WEAK_LINKAGE
-	extern Registry SAWMILL_REGISTRY;
+	extern Registry SAWMILL_REGISTRY; // NOLINT(cppcoreguidelines-avoid-non-const-global-variables)
 
 }
 

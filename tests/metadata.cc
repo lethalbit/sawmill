@@ -6,6 +6,7 @@
 
 #include <sawmill/metadata.hh>
 
+// NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)
 TEST_CASE("sawmill::source_location") {
 	const auto loc0 = sawmill::source_location::current();
 

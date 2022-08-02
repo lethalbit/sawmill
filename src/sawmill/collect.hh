@@ -14,6 +14,14 @@
 namespace sawmill {
 	/*! Interface for implementing collectors */
 	struct Collector {
+		constexpr Collector() noexcept = default;
+		constexpr Collector(const Collector&) noexcept = delete;
+		constexpr Collector(Collector&&) noexcept = default;
+		virtual ~Collector() noexcept = default;
+
+		Collector& operator=(const Collector&) noexcept = delete;
+		Collector& operator=(Collector&&) noexcept = default;
+
 		[[nodiscard]]
 		virtual Relevancy register_(Metadata& metadata) const noexcept {
 			if (enabled(metadata)) {
@@ -47,10 +55,10 @@ namespace sawmill {
 	};
 
 	SAWMILL_WEAK_LINKAGE
-	extern std::shared_ptr<Collector> NULL_COLLECTOR;
+	extern std::shared_ptr<Collector> NULL_COLLECTOR; // NOLINT(cppcoreguidelines-avoid-non-const-global-variables)
 
 	SAWMILL_WEAK_LINKAGE
-	extern std::shared_ptr<Collector> GLOBAL_COLLECTOR;
+	extern std::shared_ptr<Collector> GLOBAL_COLLECTOR; // NOLINT(cppcoreguidelines-avoid-non-const-global-variables)
 
 }
 
