@@ -5,6 +5,6 @@
 
 #include <sawmill/collect.hh>
 #include <sawmill/metadata.hh>
-
+#include <sawmill/registry.hh>
 
 #endif /* SAWMILL_HH */
