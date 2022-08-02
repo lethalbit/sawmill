@@ -40,6 +40,15 @@ namespace sawmill {
 		) noexcept {
 			return { ln, col, file, func };
 		}
+#elif defined(__clang__) and (__clang_major__ >= 9) and defined(__apple_build_version__)
+		inline static constexpr source_location current(
+			loc_t ln          = __builtin_LINE(),
+			loc_t col         = 0,
+			const char* file  = __builtin_FILE(),
+			const char* func  = __builtin_FUNCTION()
+		) noexcept {
+			return { ln, col, file, func };
+		}
 #elif defined(__GNUC__) and (__GNUC__ > 4)
 		/* GCC */
 		[[nodiscard]]
