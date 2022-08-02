@@ -9,6 +9,29 @@
 #include <sawmill/metadata.hh>
 
 namespace sawmill {
+	struct ExecutionContext {
+	private:
+		Relevancy _relevance{Relevancy::Never};
+		Metadata  _metadata{};
+	public:
+		constexpr ExecutionContext() noexcept = default;
+
+		constexpr ExecutionContext(Metadata&& meta) noexcept :
+			_metadata{std::move(meta)} { /* NOP */ }
+
+		virtual const Metadata& metadata() const noexcept {
+			return _metadata;
+		}
+
+		virtual Relevancy relevance() const noexcept {
+			return _relevance;
+		}
+
+		virtual void relevance(const Relevancy rel) noexcept {
+			_relevance = rel;
+		}
+	};
+
 	/*!
 		Here we define the SAWMILL_REGISTRY as a weak symbol.
 		This allows for proper linking between libraries (dynamic and static)
