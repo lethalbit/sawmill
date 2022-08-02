@@ -3,5 +3,5 @@
 #include <sawmill/registry.hh>
 
 namespace sawmill {
-	std::vector<std::nullptr_t> SAWMILL_REGISTRY{};
+	Registry SAWMILL_REGISTRY{};
 }
